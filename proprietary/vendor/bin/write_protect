@@ -1,0 +1,12 @@
+#!/vendor/bin/sh
+if [ $1 -eq '1' ];
+then 
+	echo "open write protect,please reboot"
+	echo -n "000000000000" | dd of=/dev/block/bootdevice/by-name/swversion seek=500 bs=1 conv=notrunc
+elif [ $1 -eq '0' ];
+then
+	echo -n "DISABLE_POWP" | dd of=/dev/block/bootdevice/by-name/swversion seek=500 bs=1 conv=notrunc
+	echo "close write protect,please reboot"
+else
+ 	echo "please input 0 or 1 to close/open write protect"
+fi

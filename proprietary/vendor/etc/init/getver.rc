@@ -1,0 +1,7 @@
+
+service getver /vendor/bin/getver
+    user root
+    group root
+    class core
+    oneshot
+    
